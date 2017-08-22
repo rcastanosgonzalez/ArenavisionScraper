@@ -11,7 +11,7 @@ Python 3
 
 ## Authors
 
-* **Rubén Castaños González** - *Initial work* - [Masoba](https://github.com/Masoba)
+* **Rubén Castaños González** - *Initial work* - [DEVmente](https://github.com/DEVmente)
 
 ## License
 
