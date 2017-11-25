@@ -82,7 +82,18 @@ def obtener_tabla_horarios():
 
     tabla_horarios = substring_horarios
 
+    
+def quitar_publicidad():
+    global tabla_horarios
 
+    while tabla_horarios.find('<td colspan="6"') != -1:
+        indice_publicidad = tabla_horarios.find('<td colspan="6"')
+        substring_tabla_inicio = tabla_horarios[:indice_publicidad]
+        indice_fin_publicidad = tabla_horarios.find("</td>", indice_publicidad)
+        substring_tabla_final = tabla_horarios[indice_fin_publicidad+5:]
+        tabla_horarios = substring_tabla_inicio + substring_tabla_final
+
+        
 def generar_HTML():
     html_horarios = open('horarios.html', 'w')
 
@@ -120,5 +131,6 @@ obtener_pagina_horarios_arenavision()
 obtener_urls_paginas_arenavision()
 obtener_urls_acestream()
 obtener_tabla_horarios()
+quitar_publicidad()
 quitar_estilos()
 generar_HTML()
