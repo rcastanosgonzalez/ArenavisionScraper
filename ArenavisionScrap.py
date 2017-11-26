@@ -82,7 +82,7 @@ def obtener_tabla_horarios():
 
     tabla_horarios = substring_horarios
 
-    
+
 def quitar_publicidad():
     global tabla_horarios
 
@@ -93,7 +93,7 @@ def quitar_publicidad():
         substring_tabla_final = tabla_horarios[indice_fin_publicidad+5:]
         tabla_horarios = substring_tabla_inicio + substring_tabla_final
 
-        
+
 def generar_HTML():
     html_horarios = open('horarios.html', 'w')
 
