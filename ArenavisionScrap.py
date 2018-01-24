@@ -1,6 +1,6 @@
 import requests
 
-url_arenavision = "http://arenavision.in"
+url_arenavision = "http://arenavision.top"
 url_horarios = ""
 urls_paginas_arenavision = []
 urls_acestream = []
@@ -45,13 +45,12 @@ def obtener_urls_paginas_arenavision():
     global urls_paginas_arenavision
 
     indice_arenavision = 1
-
     while menu_arenavision.find('ArenaVision ' + str(indice_arenavision)) != -1:
         indice_url = menu_arenavision.find('ArenaVision ' + str(indice_arenavision))
         substring_url = menu_arenavision[:indice_url]
-        indice_url = substring_url.rfind('"')
+        indice_url = substring_url.rfind('"') - 9
         url = substring_url[substring_url.rfind('/'):indice_url]
-        urls_paginas_arenavision.append(url_arenavision+url)
+        urls_paginas_arenavision.append("http://arenavision2017.ga"+url)
 
         indice_arenavision = indice_arenavision + 1
 
@@ -62,7 +61,6 @@ def obtener_urls_acestream():
     for index in range(len(urls_paginas_arenavision)):
 
         data = do_request(urls_paginas_arenavision[index])
-
         indice = data.find("acestream://")
         substring = data[indice:]
         indice = substring.find('"')
@@ -95,7 +93,7 @@ def quitar_publicidad():
 
 
 def generar_HTML():
-    html_horarios = open('horarios.html', 'w')
+    html_horarios = open('/var/www/html/arenavision/horarios.html', 'w')
 
     html_horarios.write('<!DOCTYPE html><html><head><link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Roboto"><style>html{font-family: "Roboto";}table{width: 90%;border-collapse: collapse;}td{text-align:center;}tr{border-top: 1px solid black;}tr:hover {background-color: lightyellow;}</style><title>Horarios Arenavision</title></head><body>')
     html_horarios.write('<div align="center">')
@@ -103,7 +101,7 @@ def generar_HTML():
         html_horarios.write(" <a style='font-size:30px' href='"+urls_acestream[index]+"'>"+str(index+1)+"</a> |")
 
     html_horarios.write('</div><br /><br />')
-    html_horarios.write(tabla_horarios)
+    html_horarios.write(tabla_horarios.encode('utf-8'))
     html_horarios.write('</body></html>')
     html_horarios.close()
 
@@ -121,7 +119,8 @@ def quitar_estilos():
 
 
 def do_request(url):
-    data = requests.get(url)
+    cookies = dict(beget='begetok')
+    data = requests.get(url, cookies=cookies)
     return data.text
 
 
