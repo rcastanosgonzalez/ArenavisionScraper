@@ -1,6 +1,8 @@
 # ArenavisionScraper
 Generate clean HTML with schedules and links to Acestream
 
+![alt text](https://imgur.com/wt7XgmO)
+
 ## Getting Started
 
 Download and execute ArenavisionScrap.py and it will generate your clean HTML.
