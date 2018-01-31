@@ -1,7 +1,7 @@
 # ArenavisionScraper
 Generate clean HTML with schedules and links to Acestream
 
-![alt text](https://imgur.com/wt7XgmO)
+![alt text](https://i.imgur.com/wt7XgmO.png)
 
 ## Getting Started
 
