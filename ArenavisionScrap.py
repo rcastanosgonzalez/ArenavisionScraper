@@ -101,7 +101,7 @@ def generar_HTML():
         html_horarios.write(" <a style='font-size:30px' href='"+urls_acestream[index]+"'>"+str(index+1)+"</a> |")
 
     html_horarios.write('</div><br /><br />')
-    html_horarios.write(tabla_horarios.encode('utf-8'))
+    html_horarios.write(tabla_horarios)
     html_horarios.write('</body></html>')
     html_horarios.close()
 
