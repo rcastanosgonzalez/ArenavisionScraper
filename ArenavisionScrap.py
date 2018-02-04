@@ -49,7 +49,7 @@ def obtener_urls_paginas_arenavision():
         indice_url = menu_arenavision.find('ArenaVision ' + str(indice_arenavision))
         substring_url = menu_arenavision[:indice_url]
         indice_url = substring_url.rfind('"') - 9
-        url = substring_url[substring_url.rfind('/'):indice_url]
+        url = substring_url[substring_url.rfind('http://'):indice_url]
         urls_paginas_arenavision.append("http://arenavision2017.ga"+url)
 
         indice_arenavision = indice_arenavision + 1
