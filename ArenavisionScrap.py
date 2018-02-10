@@ -1,6 +1,7 @@
 import requests
 
-url_arenavision = "http://arenavision.top"
+HORARIOS_PATH_FILE = "/var/www/html/arenavision/horarios.html"
+URL_ARENAVISION = "http://arenavision.top"
 url_horarios = ""
 urls_paginas_arenavision = []
 urls_acestream = []
@@ -10,7 +11,7 @@ tabla_horarios = ""
 
 
 def obtener_pagina_arenavision():
-    return do_request(url_arenavision)
+    return do_request(URL_ARENAVISION)
 
 
 def obtener_menu_arenavision():
@@ -33,7 +34,7 @@ def obtener_enlace_horarios_arenavision():
     indice_horarios = substring_horarios.find('"')
     substring_horarios = substring_horarios[:indice_horarios]
 
-    url_horarios = url_arenavision + substring_horarios
+    url_horarios = URL_ARENAVISION + substring_horarios
 
 
 def obtener_pagina_horarios_arenavision():
@@ -50,7 +51,7 @@ def obtener_urls_paginas_arenavision():
         substring_url = menu_arenavision[:indice_url]
         indice_url = substring_url.rfind('"') - 9
         url = substring_url[substring_url.rfind('http://'):indice_url]
-        urls_paginas_arenavision.append("http://arenavision2017.ga"+url)
+        urls_paginas_arenavision.append(url)
 
         indice_arenavision = indice_arenavision + 1
 
@@ -93,7 +94,7 @@ def quitar_publicidad():
 
 
 def generar_HTML():
-    html_horarios = open('/var/www/html/arenavision/horarios.html', 'w')
+    html_horarios = open(HORARIOS_PATH_FILE, 'w')
 
     html_horarios.write('<!DOCTYPE html><html><head><link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Roboto"><style>html{font-family: "Roboto";}table{width: 90%;border-collapse: collapse;}td{text-align:center;}tr{border-top: 1px solid black;}tr:hover {background-color: lightyellow;}</style><title>Horarios Arenavision</title></head><body>')
     html_horarios.write('<div align="center">')
